@@ -1,9 +1,22 @@
 <template>
-  <div class="dashboard">
+  <b-container>
     <span class="dashboard-country-count">
       Covid Affected Indian States : {{ Object.keys(countryData).length }}
-    </span>    
-  </div>
+    </span>
+    <b-row>
+      <b-card
+        v-for="(state,index) in Object.keys(countryData)"
+        :key="index"
+        :title="state"
+        tag="article"
+        style="max-width: 20rem; width:20rem; height:15rem;"
+        class="mb-2">
+        <b-card-text>
+          District Count: {{ Object.keys(countryData[state].districtData).length }}
+        </b-card-text>       
+      </b-card> 
+    </b-row>
+  </b-container>
 </template>
 
 <script>
