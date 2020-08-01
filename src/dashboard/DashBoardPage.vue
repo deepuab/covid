@@ -1,7 +1,7 @@
 <template>
   <div class="dashboard">
     <span class="dashboard-country-count">
-      Covid Affected Countries : {{ countryData.length }}
+      Covid Affected Indian States : {{ Object.keys(countryData).length }}
     </span>    
   </div>
 </template>
@@ -11,9 +11,11 @@ import { mapActions } from 'vuex';
 export default {
   name: 'DashBoardPage',
   computed:{
-    countryData(){
-      console.log(this.$store.state)
-      return this.$store.state.covid.countryData;
+    countryData(){      
+      console.log(Object.keys(this.$store.state.covid.indiaData) );
+      return this.$store.state.covid.indiaData;
+      console.log(Object.keys(this.$store.state.covid.indiaData) );
+
     }
   },
   created(){

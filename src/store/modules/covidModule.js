@@ -3,21 +3,19 @@ import axios from 'axios';
 export default {
     namespaced: true,
     state: {
-        countryData: []
+        indiaData: {}
     },
     mutations: {
         updateCovidData(state, data) {
-            console.log('Before', state.countryData.length)
-            state.countryData = data;
-            console.log('After', state.countryData.length)
-
+            console.log(data)
+            state.indiaData = data;
         },
     },
     actions: {
         getCovidData({ commit }) {
             // Calling API and setting data in Vuex store using mutation function
-            axios.get('/api/country_region')
-                .then((results) => commit('updateCovidData', results.data.results))
+            axios.get('https://api.covid19india.org/state_district_wise.json')
+                .then((results) => commit('updateCovidData', results.data))
                 .catch(console.error);
         },
 
