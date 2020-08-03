@@ -7,7 +7,6 @@ export default {
     },
     mutations: {
         updateCovidData(state, data) {
-            console.log(data)
             state.indiaData = data;
         },
     },
