@@ -1,17 +1,13 @@
 <template>
   <div id="app"> 
-    <DashBoardPage />
+    <router-view />
   </div>
 </template>
 
 <script>
-import DashBoardPage from './dashboard/DashBoardPage.vue'
 
 export default {
   name: 'App',
-  components: {
-    DashBoardPage
-  }
 }
 </script>
 
@@ -22,8 +18,13 @@ body{
 }
 </style>
 
-<style>
+<style scoped>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
+}
+header {
+  background-color: #999;
+  width: 1184px;
+  margin: 0 auto;
 }
 </style>

@@ -1,14 +1,15 @@
 <template>
-  <b-container>
-    <!-- <span class="dashboard-country-count">
-      Covid Affected Indian States : {{ Object.keys(countryData).length }}
-    </span> -->
+  <b-container>  
+    <span>Active:{{ this.$store.state.covid.countryData.active }}</span><br>
+    <span>Confirmed:{{ this.$store.state.covid.countryData.confirmed }}</span><br>
+    <span>Deaths:{{ this.$store.state.covid.countryData.deceased }}</span><br>
+    <span>Revovered:{{ this.$store.state.covid.countryData.recovered }}</span><br>
     <b-row>
-      <StateCard 
-        v-for="(state,index) in countryData"
+      <CoronaDetailsCard 
+        v-for="(state,index) in statesData"
         :key="index"
-        :state-data="state"
-        :name="index"
+        :data="state"
+        :name="state.name"
       />
     </b-row>
   </b-container>
@@ -16,35 +17,13 @@
 
 <script>
 import { mapActions } from 'vuex';
-import StateCard from '../state/StateCard.vue';
+import CoronaDetailsCard from '../common/CoronaDetailCard.vue';
 export default {
   name: 'DashBoardPage',
-  components:{StateCard},
+  components:{CoronaDetailsCard},
   computed:{
-    countryData(){      
-      console.log(this.$store.state.covid.indiaData)
-      return this.$store.state.covid.indiaData;
-    },
-    stateStatistics(){
-      const states = Object.keys(this.$store.state.covid.indiaData);
-          let stateStatistics= {
-          active:0,
-          confirmed:0,
-          deceased:0,
-          recovered:0
-        };
-      states.forEach(state => {   
-        const districts = Object.keys(this.$store.state.covid.indiaData[state]['districtData']);
-        districts.forEach(district=>{
-          const districtData = this.$store.state.covid.indiaData[state]['districtData'][district];
-          stateStatistics.active+=districtData.active;
-          stateStatistics.confirmed+=districtData.confirmed;
-          stateStatistics.deceased+=districtData.deceased;
-          stateStatistics.recovered+=districtData.recovered;
-        });
-      });
-      console.log(stateStatistics);
-      return stateStatistics;
+    statesData(){      
+      return this.$store.state.covid.statesData;
     },
   },
   created(){
