@@ -8,7 +8,7 @@ import DistrictDetailsPage from '../districtDetails1/DistrictDetailsPage.vue';
 Vue.use(Router);
 
 export default new Router({
-    mode: 'history',
+    // mode: 'history',
     routes: [{
         path: '/',
         name: 'Home',
