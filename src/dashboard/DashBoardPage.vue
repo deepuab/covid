@@ -1,9 +1,5 @@
 <template>
-  <b-container>  
-    <span>Active:{{ this.$store.state.covid.countryData.active }}</span><br>
-    <span>Confirmed:{{ this.$store.state.covid.countryData.confirmed }}</span><br>
-    <span>Deaths:{{ this.$store.state.covid.countryData.deceased }}</span><br>
-    <span>Revovered:{{ this.$store.state.covid.countryData.recovered }}</span><br>
+  <b-container>
     <b-row>
       <CoronaDetailsCard 
         v-for="(state,index) in statesData"

@@ -11,22 +11,22 @@
           pill
           variant="warning"
           class="corona-card_button"
-        >Active Cases: {{ data.active.toLocaleString(undefined) }}</b-button></span><br>
+        >Active Cases: {{ data.active | number-formatter }}</b-button></span><br>
         <span><b-button
           pill
           variant="danger"
           class="corona-card_button"
-        >Deaths: {{ data.deceased.toLocaleString(undefined) }}</b-button></span><br>
+        >Deaths: {{ data.deceased | number-formatter }}</b-button></span><br>
         <span><b-button
           pill
           variant="info"
           class="corona-card_button"
-        >Confirmed: {{ data.confirmed.toLocaleString(undefined) }}</b-button></span><br>
+        >Confirmed: {{ data.confirmed | number-formatter }}</b-button></span><br>
         <span><b-button
           pill
           variant="success"
           class="corona-card_button"
-        >Recovered: {{ data.recovered.toLocaleString(undefined) }}</b-button></span>
+        >Recovered: {{ data.recovered | number-formatter }}</b-button></span>
       </em>
     </template>
   </b-card>
