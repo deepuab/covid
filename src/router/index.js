@@ -8,7 +8,7 @@ import DistrictDetailsPage from '../districtDetails1/DistrictDetailsPage.vue';
 Vue.use(Router);
 
 export default new Router({
-    mode: 'history',
+    // mode: 'history',
     base: process.env.NODE_ENV === 'production'
         ? 'https://deepuab.github.io/covid/'
         : '/',
