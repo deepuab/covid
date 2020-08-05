@@ -1,5 +1,9 @@
 <template>
   <b-container>
+    <HeaderStatus
+      :data="this.$store.state.covid.countryData"
+      title="India"
+    />
     <b-row>
       <CoronaDetailsCard 
         v-for="(state,index) in statesData"
@@ -14,9 +18,10 @@
 <script>
 import { mapActions } from 'vuex';
 import CoronaDetailsCard from '../common/CoronaDetailCard.vue';
+import HeaderStatus from '../common/HeaderStatus.vue';
 export default {
   name: 'DashBoardPage',
-  components:{CoronaDetailsCard},
+  components:{CoronaDetailsCard,HeaderStatus},
   computed:{
     statesData(){      
       return this.$store.state.covid.statesData;

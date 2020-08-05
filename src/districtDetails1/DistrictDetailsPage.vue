@@ -1,8 +1,12 @@
 <template>
   <b-container>
-    <b-row :v-if="this.$store.state.covid.statesData.length">
+    <HeaderStatus
+      :data="stateData"
+      :title="stateData.name"
+    />
+    <b-row>
       <CoronaDetailsCard 
-        v-for="(district,index) in districtsData"
+        v-for="(district,index) in stateData.districtData"
         :key="index"
         :data="district"
         :name="district.name"
@@ -14,18 +18,19 @@
 <script>
 import { mapActions } from 'vuex';
 import CoronaDetailsCard from '../common/CoronaDetailCard.vue';
+import HeaderStatus from '../common/HeaderStatus.vue';
 export default {
     name:'DistrictDetailsPage',
-    components:{CoronaDetailsCard},
+    components:{CoronaDetailsCard,HeaderStatus},
         computed:{
-        districtsData(){
+        stateData(){
           const { stateCode } = this.$route.params;
           const matchedState = this.$store.state.covid.statesData.find((state) => state.stateCode === stateCode);
-          return matchedState.districtData;
+          return matchedState;
           }
     },
     created(){
-    window.scrollTo(0,0);
+    window.scrollTo(0,0);    
   },
   
    methods: {
