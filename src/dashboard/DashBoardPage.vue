@@ -5,6 +5,13 @@
       title="India"
     />
     <b-row>
+      <b-form-input
+        v-model="searchKey"    
+        placeholder="Search"
+        class="mx-auto"
+      />
+    </b-row>
+    <b-row>
       <CoronaDetailsCard 
         v-for="(state,index) in statesData"
         :key="index"
@@ -22,13 +29,23 @@ import HeaderStatus from '../common/HeaderStatus.vue';
 export default {
   name: 'DashBoardPage',
   components:{CoronaDetailsCard,HeaderStatus},
+    data: function () {
+            return {
+                searchKey: '',
+                filteredStates:[]
+            }
+        }, 
   computed:{
-    statesData(){      
-      return this.$store.state.covid.statesData;
+    statesData(){  
+      return this.filteredStates.filter(state => {
+        return state.name.toUpperCase().startsWith(this.searchKey.toUpperCase())
+      });      
     },
   },
   created(){
-    this.getCovidData();
+    this.getCovidData().then(()=>{
+      this.filteredStates=this.$store.state.covid.statesData;
+    });
   },
 
    methods: {
