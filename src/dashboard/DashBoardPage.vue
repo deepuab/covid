@@ -1,15 +1,24 @@
 <template>
   <b-container>
-    <HeaderStatus
-      :data="this.$store.state.covid.countryData"
-      title="India"
-    />
-    <b-row>
+    <b-col>
+      <HeaderStatus
+        :data="this.$store.state.covid.countryData"
+        title="India"
+      />
+    </b-col>
+    <b-row class="dashboard-search_input">
       <b-form-input
         v-model="searchKey"    
-        placeholder="Search"
-        class="mx-auto"
+        placeholder="Search States"               
       />
+    </b-row>
+    <b-row>
+      <b-col>
+        <NoMatches
+          :visible="statesData.length==0"
+          message="No state data found!"
+        />
+      </b-col>
     </b-row>
     <b-row>
       <CoronaDetailsCard 
@@ -26,9 +35,10 @@
 import { mapActions } from 'vuex';
 import CoronaDetailsCard from '../common/CoronaDetailCard.vue';
 import HeaderStatus from '../common/HeaderStatus.vue';
+import NoMatches from '../common/NoMatches.vue';
 export default {
   name: 'DashBoardPage',
-  components:{CoronaDetailsCard,HeaderStatus},
+  components:{CoronaDetailsCard,HeaderStatus, NoMatches},
     data: function () {
             return {
                 searchKey: '',
@@ -65,6 +75,9 @@ export default {
   color: white;
   font-size: 18px;
   text-align: center;
+}
+.dashboard-search_input{
+    margin:0 5px 0 5px;
 }
 
 </style>

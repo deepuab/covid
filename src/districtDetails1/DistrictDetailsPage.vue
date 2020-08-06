@@ -4,11 +4,19 @@
       :data="stateData"
       :title="stateData.name"
     />
-    <b-row>
+    <b-row class="district-search_input">
       <b-form-input
         v-model="searchKey"    
-        placeholder="Search"
+        placeholder="Search District"        
       />
+    </b-row>
+    <b-row>
+      <b-col>
+        <NoMatches
+          :visible="stateData.districtData.length==0"
+          message="No district data found!"
+        />
+      </b-col>
     </b-row>
     <b-row>
       <CoronaDetailsCard 
@@ -25,9 +33,10 @@
 import { mapActions } from 'vuex';
 import CoronaDetailsCard from '../common/CoronaDetailCard.vue';
 import HeaderStatus from '../common/HeaderStatus.vue';
+import NoMatches from '../common/NoMatches.vue';
 export default {
     name:'DistrictDetailsPage',
-    components:{CoronaDetailsCard,HeaderStatus},
+    components:{CoronaDetailsCard,HeaderStatus,NoMatches},
         data: function () {
             return {
                 searchKey: '',
@@ -58,5 +67,8 @@ export default {
 </script>
 
 <style scoped>
+.district-search_input{
+  margin:0 5px 0 5px;
+}
 
 </style>

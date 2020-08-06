@@ -38,7 +38,7 @@ export default {
   color: honeydew
 }
 .header-count_label{
-  font-size: 2em;
+  font-size: 1.8em;
 }
 .header-category_label{
   color: white;
