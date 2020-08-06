@@ -1,4 +1,11 @@
-# covid
+# India Covid Status
+A project for visualizing covid case statistics in India
+
+## API
+https://api.covid19india.org/state_district_wise.json
+
+## Github Page
+https://deepuab.github.io/covid
 
 ## Project setup
 ```

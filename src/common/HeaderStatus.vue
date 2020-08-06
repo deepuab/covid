@@ -11,13 +11,13 @@
       </b-col>
       <b-col class="header-label">
         <span class="header-category_label ">Deaths </span><span class="header-count_label text-danger">{{ data.deceased | number-formatter }}</span>
+      </b-col>    
+      <b-col class="header-label">
+        <span class="header-category_label ">Recovered </span><span class="header-count_label text-success">{{ data.recovered | number-formatter }}</span>
       </b-col> 
       <b-col class="header-label">
         <span class="header-category_label ">Confirmed </span><span class="header-count_label text-info">{{ data.confirmed | number-formatter }}</span>
-      </b-col>     
-      <b-col class="header-label">
-        <span class="header-category_label ">Recovered </span><span class="header-count_label text-success">{{ data.recovered | number-formatter }}</span>
-      </b-col>     
+      </b-col>      
     </b-row>
   </b-container>
 </template>
