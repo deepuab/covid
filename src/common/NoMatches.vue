@@ -10,10 +10,10 @@
 
 <script>
 export default {
-    name:'NoMatches',
-    props:['visible','message']
-    
-}
+  name: 'NoMatches',
+  props: ['visible', 'message'],
+
+};
 </script>
 
 <style scoped>

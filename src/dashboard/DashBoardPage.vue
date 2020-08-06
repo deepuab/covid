@@ -8,8 +8,8 @@
     </b-col>
     <b-row class="dashboard-search_input">
       <b-form-input
-        v-model="searchKey"    
-        placeholder="Search States"               
+        v-model="searchKey"
+        placeholder="Search States"
       />
     </b-row>
     <b-row>
@@ -21,7 +21,7 @@
       </b-col>
     </b-row>
     <b-row>
-      <CoronaDetailsCard 
+      <CoronaDetailsCard
         v-for="(state,index) in statesData"
         :key="index"
         :data="state"
@@ -36,33 +36,34 @@ import { mapActions } from 'vuex';
 import CoronaDetailsCard from '../common/CoronaDetailCard.vue';
 import HeaderStatus from '../common/HeaderStatus.vue';
 import NoMatches from '../common/NoMatches.vue';
+
 export default {
   name: 'DashBoardPage',
-  components:{CoronaDetailsCard,HeaderStatus, NoMatches},
-    data: function () {
-            return {
-                searchKey: '',
-                filteredStates:[]
-            }
-        }, 
-  computed:{
-    statesData(){  
-      return this.filteredStates.filter(state => {
-        return state.name.toUpperCase().startsWith(this.searchKey.toUpperCase())
-      });      
+  components: { CoronaDetailsCard, HeaderStatus, NoMatches },
+  data() {
+    return {
+      searchKey: '',
+      filteredStates: [],
+    };
+  },
+  computed: {
+    statesData() {
+      return this.filteredStates.filter(
+        (state) => state.name.toUpperCase().startsWith(this.searchKey.toUpperCase()),
+      );
     },
   },
-  created(){
-    this.getCovidData().then(()=>{
-      this.filteredStates=this.$store.state.covid.statesData;
+  created() {
+    this.getCovidData().then(() => {
+      this.filteredStates = this.$store.state.covid.statesData;
     });
   },
 
-   methods: {
-     ...mapActions('covid', ['getCovidData']),
-   }
+  methods: {
+    ...mapActions('covid', ['getCovidData']),
+  },
 
-}
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

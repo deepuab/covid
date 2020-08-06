@@ -6,11 +6,11 @@ import covidModule from './modules/covidModule';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    // root state
-    state: {
+  // root state
+  state: {
 
-    },
-    modules: {
-        covid: covidModule,
-    },
+  },
+  modules: {
+    covid: covidModule,
+  },
 });

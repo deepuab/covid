@@ -1,13 +1,13 @@
 <template>
-  <b-card         
+  <b-card
     :title="data.name"
-    tag="article" 
+    tag="article"
     class="mx-auto my-3 corona-card"
     :style=" data.districtData ? 'cursor: pointer;' : ''"
     @click="navigate()"
   >
     <template v-slot:footer>
-      <em>        
+      <em>
         <span><b-button
           pill
           variant="warning"
@@ -17,7 +17,7 @@
           pill
           variant="danger"
           class="corona-card_button"
-        >Deaths: {{ data.deceased | number-formatter }}</b-button></span><br> 
+        >Deaths: {{ data.deceased | number-formatter }}</b-button></span><br>
         <span><b-button
           pill
           variant="success"
@@ -28,7 +28,7 @@
           variant="info"
           class="corona-card_button"
         >Confirmed: {{ data.confirmed | number-formatter }}</b-button></span><br>
-        
+
       </em>
     </template>
   </b-card>
@@ -36,16 +36,16 @@
 
 <script>
 export default {
-    name:'CoronaDetailsCard',
-    props:['data','title'],
-    methods:{
-      navigate(){
-        if(this.data.stateCode){
-          this.$router.push(`/states/${this.data.stateCode}`);
-        }
+  name: 'CoronaDetailsCard',
+  props: ['data', 'title'],
+  methods: {
+    navigate() {
+      if (this.data.stateCode) {
+        this.$router.push(`/states/${this.data.stateCode}`);
       }
-    }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
@@ -55,10 +55,10 @@ export default {
     font-weight: bold;
 }
 .corona-card{
-    max-width: 15rem; 
-    width:20rem; 
+    max-width: 15rem;
+    width:20rem;
     height:15rem;
-    text-align: center;    
+    text-align: center;
 }
 .corona-card_button{
     min-width: 13em;
