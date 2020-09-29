@@ -24,7 +24,8 @@ export default {
   actions: {
     getCovidData({ commit }) {
       // Calling API and setting data in Vuex store using mutation function
-      return axios.get('https://api.covid19india.org/state_district_wise.json')
+      console.log(process.env.VUE_APP_API_URL);
+      return axios.get(`${process.env.VUE_APP_API_URL}`)
         .then((results) => {
           const countryData = results.data;
           const countryObject = {
