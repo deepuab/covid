@@ -54,7 +54,6 @@ export default {
     },
   },
   created() {
-    console.log(`Test Secret is ${process.env.TEST_SECRET}`);
     this.getCovidData().then(() => {
       this.filteredStates = this.$store.state.covid.statesData;
     });
